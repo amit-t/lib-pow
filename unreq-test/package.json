@@ -1,0 +1,59 @@
+{
+  "name": "unreq-test",
+  "version": "0.1.0",
+  "description": "Test project for unreq package",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "biome check . && biome format .",
+    "express:pg": "bun run src/express/postgres.ts",
+    "express:mysql": "bun run src/express/mysql.ts",
+    "express:mongo": "bun run src/express/mongodb.ts",
+    "fastify:pg": "bun run src/fastify/postgres.ts",
+    "fastify:mysql": "bun run src/fastify/mysql.ts",
+    "fastify:mongo": "bun run src/fastify/mongodb.ts",
+    "elysia:pg": "bun run src/elysia/postgres.ts",
+    "elysia:mysql": "bun run src/elysia/mysql.ts",
+    "elysia:mongo": "bun run src/elysia/mongodb.ts",
+    "setup:pg": "bun run scripts/setup-postgres.ts",
+    "setup:mysql": "bun run scripts/setup-mysql.ts",
+    "setup:mongo": "bun run scripts/setup-mongodb.ts",
+    "test:all": "bun run scripts/test-all.ts",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:test": "docker-compose up --abort-on-container-exit",
+    "init:test:all": "pnpm docker:build && pnpm docker:up && pnpm docker:test && pnpm test:all && pnpm docker:down"
+  },
+  "keywords": [
+    "unreq",
+    "http",
+    "cancellation",
+    "test"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "fastify": "^5.3.2",
+    "elysia": "^0.8.14",
+    "mongodb": "^6.3.0",
+    "mysql2": "^3.9.1",
+    "pg": "^8.11.3",
+    "pino": "^8.20.0",
+    "pino-pretty": "^11.0.0",
+    "unreq": "^0.1.0",
+    "ioredis": "^5.3.2",
+    "axios": "^1.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.3.1",
+    "@types/pg": "^8.10.9",
+    "biome": "^0.3.3",
+    "bun-types": "^1.0.25",
+    "husky": "^8.0.3",
+    "typescript": "^5.1.3"
+  }
+}
